@@ -1,5 +1,5 @@
 <?php
-require_once('config/config.php');
+require_once __DIR__ .'/../config/config.php';
 
 $user_id = "root" ?? null;
 $user_email = "root" ?? null;
@@ -11,3 +11,5 @@ if($success){
 } else {
     echo "Failed to insert activity log";
 }
+
+?>
