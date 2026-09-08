@@ -30,6 +30,7 @@ $buttons = [
             <?php foreach($buttons as $button):?>
                 <tr>
             <td><?= htmlspecialchars($button)?></td>
+           
             <td>
 
                 <form method="post">
