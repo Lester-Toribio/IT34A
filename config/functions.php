@@ -5,7 +5,7 @@ function redirect($path){
     exit;
 }
 
-function loginUser($pdo,$login,$password){
+function loginUser($pdo, $login, $password){
 //Application query #2
 
 $sql = "
@@ -16,8 +16,8 @@ $sql = "
         user_password,
         user_role
     FROM users
-    Where user_email = login
-    ORuser_username = :login
+    Where user_email = :login
+    OR user_username = :login
     LIMIT 1
 
 ";
@@ -30,7 +30,7 @@ $user = $stmt->fetch();
 if(!$user){
     return false;
 }
-if(!password_verify($password, $user['user_passord'])){
+if(!password_verify($password, $user['user_password'])){
     return false;
 }
 $_SESSION['user_id']=$user['user_id'];
@@ -43,9 +43,9 @@ return true;
 
 }
 
-fucntion requireLogin(){
+function requireLogin(){
 if(!isset($_SESSION['user_id'])){
-header('location: ' '. BASE_URL .' '/index.php');
+header('location: ' . BASE_URL . '/index.php');
 exit;
 
 }
@@ -56,7 +56,7 @@ exit;
 function requireRole($role){
 requireLogin();
 
-if($_SESSION['user_role' !== $role]){
+if($_SESSION['user_role'] !== $role){
 http_response_code(403);
 die('Access denied');
 
