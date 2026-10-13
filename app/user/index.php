@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>Hello User</h1>
-    <a href="../auth/signout.php">Sign Out</a>
+     <a href="<?= BASE_URL ?>/auth/signout.php">Sign Out</a>
 </body>
 </html>
