@@ -13,7 +13,7 @@ if(isset($_SESSION['user_id'])){
     );
 }
 
-
+endUserSession($pdo);
 $_SESSION =[];
 session_destroy();
 
