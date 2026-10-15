@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../functions/auth.php');
 require_once(__DIR__ . '/../functions/redirect.php');
 require_once(__DIR__ . '/../functions/sessions.php');
 
-define('BASE_URL', 'http://localhost/it34aToribio');
+define('BASE_URL', 'http://localhost/it34a');
 //http://localhost/IT34A/includes/test-logger.php
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'it34atoribio_lab_db');

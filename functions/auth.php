@@ -30,6 +30,14 @@ if(!password_verify($password, $user['user_password'])){
     return false;
 }
 
+//check if user already has an active session
+if(hasActiveUserSession($pdo, $user['user_id'])){
+    return 'active_session';
+
+}
+
+
+//SESSION variables
 $_SESSION['user_id']=$user['user_id'];
 $_SESSION['user_email']=$user['user_email'];
 $_SESSION['user_username']=$user['user_username'];
