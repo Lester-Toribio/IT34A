@@ -1,9 +1,5 @@
-<?php
 
-function redirect($path){
-    header("Location: " . BASE_URL . $path);
-    exit;
-}
+<?php
 
 function loginUser($pdo,$login,$password){
 //Application query #2
@@ -16,8 +12,8 @@ $sql = "
         user_password,
         user_role
     FROM users
-    Where user_email = login
-    ORuser_username = :login
+    Where user_email = :login
+    OR user_username = :login
     LIMIT 1
 
 ";
@@ -30,22 +26,34 @@ $user = $stmt->fetch();
 if(!$user){
     return false;
 }
-if(!password_verify($password, $user['user_passord'])){
+if(!password_verify($password, $user['user_password'])){
     return false;
 }
+
+//check if user already has an active session
+if(hasActiveUserSession($pdo, $user['user_id'])){
+    return 'active_session';
+
+}
+
+
+//SESSION variables
 $_SESSION['user_id']=$user['user_id'];
 $_SESSION['user_email']=$user['user_email'];
 $_SESSION['user_username']=$user['user_username'];
 $_SESSION['user_role']=$user['user_role'];
 
+
+// initial database session
+
+$_SESSION['session_id'] = startUserSession($pdo);
 return true;
-
-
 }
 
-fucntion requireLogin(){
+
+function requireLogin(){
 if(!isset($_SESSION['user_id'])){
-header('location: ' '. BASE_URL .' '/index.php');
+header('location: ' . BASE_URL . '/index.php');
 exit;
 
 }
@@ -56,7 +64,7 @@ exit;
 function requireRole($role){
 requireLogin();
 
-if($_SESSION['user_role' !== $role]){
+if($_SESSION['user_role'] !== $role){
 http_response_code(403);
 die('Access denied');
 
