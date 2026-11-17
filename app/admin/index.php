@@ -71,11 +71,11 @@ if($action == 'export'){
     <h1>Hello Admin</h1>
 
     <a href="../auth/signout.php">Sign Out</a>
-<>php if($section==='activity-logs'):?>
+<php if($section==='activity-logs'):?>
 
 
 <h4>Activity Logs
-    <a href="index.php?section=activity-logs&amp;action=export">Export CSV<?a>
+    <a href="index.php?section=activity-logs&amp;action=export">Export CSV</a>
 </h4>
 
 <table id= "example" class= "table table-striped" style="width:auto">
@@ -133,7 +133,7 @@ if($action == 'export'){
         </tbody>
 
     </table>
-    <?php endif; ?>
+ 
 </body>
 
 </html>
