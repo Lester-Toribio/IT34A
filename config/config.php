@@ -7,6 +7,7 @@ require_once __DIR__ . '/../function/auth.php';
 require_once __DIR__ . '/../function/redirect.php';
 require_once __DIR__ . '/../function/sessions.php';
 require_once __DIR__ . '/../function/csrf.php';
+require_once __DIR__ . '/../function/csv.php';
 
 define('BASE_URL', 'http://localhost/it34a');
 
